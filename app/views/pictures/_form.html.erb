@@ -1,0 +1,29 @@
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<%= form_for(@picture, html: {multipart: true}) do |f| %>
+  <% if @picture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
+
+      <ul>
+      <% @picture.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+  </div>
+  <div id="dropzone">
+    DROPZONE
+  </div>
+  <p id="instructions"></p>
+  <p id="upload-status-text"></p>
+  <div id="upload-status-progressbar"></div>
+  <p id="data"></p>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
